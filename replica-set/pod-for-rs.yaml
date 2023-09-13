@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rs-app-pod
+  labels:
+    app: rs-app-new
+spec:
+  containers:
+  - name: beta
+    image: nginx
+    
