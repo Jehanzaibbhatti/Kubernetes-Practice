@@ -1,0 +1,20 @@
+# blue-deployment.yaml (Define the "blue" deployment)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blue-app
+  template:
+    metadata:
+      labels:
+        app: blue-app
+    spec:
+      containers:
+      - name: blue-app
+        image: linuxacademycontent/ckad-nginx:blue  # Use the image for the blue version
+        ports: 
+        - containerPort: 80

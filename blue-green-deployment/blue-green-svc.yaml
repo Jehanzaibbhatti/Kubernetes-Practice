@@ -1,0 +1,12 @@
+# service.yaml (Define a Service to expose the app)
+apiVersion: v1
+kind: Service
+metadata:
+  name: blue-green-service
+spec:
+  selector:
+    app: blue-app  # Initially route traffic to the "blue" deployment
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
