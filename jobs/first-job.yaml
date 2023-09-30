@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: first-job
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+      - name: first-job-container
+        image: busybox:stable
+        command: ["echo", "This is my first container created from a job"]
+      restartPolicy: Never
+  backoffLimit: 4
+  activeDeadlineSeconds: 40
+  completions: 5
