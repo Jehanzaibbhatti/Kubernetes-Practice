@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: first-cron-job
+  namespace: default
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      backoffLimit: 5
+      activeDeadlineSeconds: 20
+      parallelism: 3
+      completions: 5
+      template:
+        spec:
+          containers:
+          - name: cron-job-container
+            image: busybox:stable
+            command:
+            - echo
+            - This is a test CronJob!
+          restartPolicy: Never
+
